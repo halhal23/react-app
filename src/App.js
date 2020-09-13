@@ -1,18 +1,32 @@
-import React from 'react';
-function App() {
-  return (
-    <React.Fragment>
-      <Cat />
-      <Cat />
-      <Cat />
-      <Cat />
-      <Cat />
-    </React.Fragment>
-  )
-}
+import React, { Component } from 'react';
+const App = () => (<Counter></Counter>)
 
-const Cat = () => {
-  return <div>meow meow</div>
+class Counter extends Component {
+
+  constructor(props){
+    super(props)
+    this.state = {
+      count: 0
+    }
+  }
+
+  clickPlusButton = () => {
+    this.setState({ count: this.state.count + 1})
+  }
+
+  clickMinusButton = () => {
+    this.setState({ count: this.state.count -1 })
+  }
+
+  render(){
+    return (
+      <React.Fragment>        
+        <div>Counter: { this.state.count }</div>
+        <button onClick={this.clickPlusButton}>+1</button>
+        <button onClick={this.clickMinusButton}>-1</button>
+      </React.Fragment>
+    )
+  }
 }
 
 export default App;
