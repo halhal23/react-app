@@ -1,6 +1,6 @@
 import React from 'react';
 function App() {
-  return <div>hello world welcome</div>;
+  return <input type="text" onClick={() => {console.log('クリック')}} />;
 }
 
 export default App;
