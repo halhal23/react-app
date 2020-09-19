@@ -15,7 +15,11 @@ class Counter extends Component {
   }
 
   clickMinusButton = () => {
-    this.setState({ count: this.state.count -1 })
+    this.setState({ count: this.state.count - 1 })
+  }
+
+  clickMultiButton = () => {
+    this.setState({ count: this.state.count * 2})
   }
 
   render(){
@@ -24,6 +28,7 @@ class Counter extends Component {
         <div>Counter: { this.state.count }</div>
         <button onClick={this.clickPlusButton}>+1</button>
         <button onClick={this.clickMinusButton}>-1</button>
+        <button onClick={this.clickMultiButton}>x2</button>
       </React.Fragment>
     )
   }
