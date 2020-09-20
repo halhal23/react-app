@@ -1,38 +1,27 @@
 import React, { Component } from 'react';
-const App = () => (<Counter></Counter>)
+import { connect } from 'react-redux'
+import { increment, decrement, double } from '../actions'
 
-class Counter extends Component {
-
-  constructor(props){
-    super(props)
-    this.state = {
-      count: 0
-    }
-  }
-
-  clickPlusButton = () => {
-    this.setState({ count: this.state.count + 1})
-  }
-
-  clickMinusButton = () => {
-    this.setState({ count: this.state.count - 1 })
-  }
-
-  clickMultiButton = () => {
-    this.setState({ count: this.state.count * 2})
-  }
-
+class App extends Component {
   render(){
+    const props = this.props
     return (
       <React.Fragment>        
-        <div>Counter: { this.state.count }</div>
-        <button onClick={this.clickPlusButton}>+1</button>
-        <button onClick={this.clickMinusButton}>-1</button>
-        <button onClick={this.clickMultiButton}>x2</button>
+        <div>value: { props.value }</div>
+        <button onClick={props.increment}>+1</button>
+        <button onClick={props.decrement}>-1</button>
+        <button onClick={props.double}>x2</button>
       </React.Fragment>
     )
   }
 }
 
-export default App;
+const mapStateToProps = state => ({ value: state.count.value })
+// const mapDispatchToProps = dispatch => ({
+//   increment: () => dispatch(increment()),
+//   decrement: () => dispatch(decrement()),
+//   double: () => dispatch(double())
+// })
+const mapDispatchToProps = ({ increment, decrement, double })
+export default connect(mapStateToProps, mapDispatchToProps)(App)
 
